@@ -3,7 +3,8 @@ import React, { Component } from "react";
 export default class ColorSelector extends Component {
   constructor(props) {
     super(props);
-    this.selectColorCallback = props.selectColorCallback;
+    this.setColorCallback = props.setColorCallback;
+    this.state = {selectedColor: '#000'}
   }
 
   makeColorSwatches() {
@@ -20,7 +21,7 @@ export default class ColorSelector extends Component {
     ].map((str, idx) => {
       return (
         <div
-          onClick={() => this.selectColorCallback(str)}
+          onClick={() => this.setColorCallback(str)}
           key={idx}
           className="color-swatch"
           style={{ backgroundColor: str }}

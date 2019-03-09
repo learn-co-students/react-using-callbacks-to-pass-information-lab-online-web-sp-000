@@ -1,46 +1,46 @@
-import React, { Component } from 'react';
-import chromeBoi from './data.js'
-import Cell from './Cell.js'
-import ColorSelector from './ColorSelector.js'
+import React, { Component } from "react";
+import chromeBoi from "./data.js";
+import Cell from "./Cell.js";
+import ColorSelector from "./ColorSelector.js";
 
 export default class Matrix extends Component {
-
   constructor() {
-    super()
-    this.state = { selectedColor: '#fff' }
+    super();
+    this.state = { selectedColor: "#fff" };
   }
 
-  selectColor(str) {  // this = ColorSelector no matter what syntax is used to declare this method
-    this.setState({selectedColor: str})
-    // console.log(`Matrix.state.selectedColor: ${this.state.selectedColor}`);
+  setColor(str) {
+    // SETTTER, çalled from ColorSelector, to SET the color
+    this.setState({ selectedColor: str });
   }
 
-  selectedColor = function() {
-    return this.state.selectedColor
-  }
+  getColor = function() {
+    // GETTER, called from Cell
+    return this.state.selectedColor;
+  };
 
-  genRow = (vals) => (
-    vals.map((val, idx) => <Cell key={idx} color={val} colorSelectorCallback={this.selectedColor}/>)
-  )
+  genRow = vals =>
+    vals.map((val, idx) => (
+      <Cell key={idx} color={val} getColorCallback={this.getColor} />
+    ));
 
-  genMatrix = () => (
-    this.props.values.map((rowVals, idx) => <div key={idx} className="row">{this.genRow(rowVals)}</div>)
-  )
-
+  genMatrix = () =>
+    this.props.values.map((rowVals, idx) => (
+      <div key={idx} className="row">
+        {this.genRow(rowVals)}
+      </div>
+    ));
 
   render() {
     return (
       <div id="app">
-        <ColorSelector selectColorCallback={this.selectColor} />
-        <div id="matrix">
-          {this.genMatrix()}
-        </div>
+        <ColorSelector setColorCallback={this.setColor} />
+        <div id="matrix">{this.genMatrix()}</div>
       </div>
-    )
+    );
   }
-
 }
 
 Matrix.defaultProps = {
   values: chromeBoi
-}
+};
