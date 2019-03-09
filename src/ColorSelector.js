@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 
 export default class ColorSelector extends Component {
-  makeColorSwatches = () =>
-    [
+  constructor(props) {
+    super(props);
+    this.selectColorCallback = props.selectColorCallback;
+  }
+
+  makeColorSwatches() {
+    return [
       "#F00",
       "#F80",
       "#FF0",
@@ -15,17 +20,13 @@ export default class ColorSelector extends Component {
     ].map((str, idx) => {
       return (
         <div
-          onClick={this.selectColor(str)}
+          onClick={() => this.selectColorCallback(str)}
           key={idx}
           className="color-swatch"
           style={{ backgroundColor: str }}
         />
       );
     });
-
-  selectColor(str) {
-    // call parent's setColor method
-    console.log(`selectColor: ${str}`);
   }
 
   render() {
