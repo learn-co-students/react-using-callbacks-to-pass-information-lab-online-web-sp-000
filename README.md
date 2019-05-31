@@ -91,9 +91,9 @@ You should see 100x100 cells rendering with a color selection `<div>` at the top
 of the screen. When any of the color swatches in the color selection `<div>` are
 clicked, subsequently selected cells should change to that color.
 
-<p align="center">
+<!-- <p align="center">
   <img src="src/completed-example.gif" />
-</p>
+</p> -->
 
 ## Resources
 
