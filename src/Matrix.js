@@ -13,23 +13,25 @@ export default class Matrix extends Component {
   }
 
   genRow = (vals) => (
-    vals.map((val, idx) => <Cell key={idx} color={val} printCurrentSelection={this.state.selectedColor} />)
+    vals.map((val, idx) => <Cell key={idx} color={val} printCurrentSelection={this.getSelectedColor} />)
   )
 
   genMatrix = () => (
     this.props.values.map((rowVals, idx) => <div key={idx} className="row">{this.genRow(rowVals)}</div>)
   )
 
-  contactCell = (color) => {
+  setColor = (color) => {
     this.setState({
       selectedColor: color
     })
   }
 
+  getSelectedColor = () => (this.state.selectedColor)
+
   render() {
     return (
       <div id="app">
-        <ColorSelector callbackFromParent={this.contactCell} />
+        <ColorSelector callbackFromParent={this.setColor} />
         <div id="matrix">
           {this.genMatrix()}
         </div>

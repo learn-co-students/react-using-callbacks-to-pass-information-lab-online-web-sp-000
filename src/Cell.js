@@ -16,7 +16,7 @@ export default class Cell extends Component {
   }
 
   colorCell = (event) => {
-    let color = this.props.printCurrentSelection
+    let color = this.props.printCurrentSelection()
     this.setCell(color)
     event.target.style.backgroundColor = color
   }
