@@ -9,8 +9,6 @@ export default class ColorSelector extends Component {
   )
   
   render() {
-    console.log(this);
-        
     return (
       <div id="colorSelector">
         {this.makeColorSwatches()}
