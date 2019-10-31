@@ -10,11 +10,10 @@ export default class Cell extends Component {
   }
   
   handleCellClick =()=> {
-    let newColor = this.props.setCellColor()
+    let newColor = this.props.getSelectedColor()
     this.setState( {
       color: newColor         
     })
-    console.log("updated cell state to ", this.state.color)
   }
 
   render() {
