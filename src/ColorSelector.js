@@ -10,9 +10,7 @@ export default class ColorSelector extends Component {
 
   render() {
     return (
-      <div id="colorSelector">
-        {this.makeColorSwatches()}
-      </div>
+       <div onClick={callback} key={idx} className="color-swatch" style={{backgroundColor: str}}/>
     )
   }
 }
