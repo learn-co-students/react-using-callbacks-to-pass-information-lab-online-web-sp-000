@@ -1,29 +1,40 @@
-import React, { Component } from 'react';
-import learnSymbol from './data.js'
+import React, { Component } from 'react'
 import Cell from './Cell.js'
 import ColorSelector from './ColorSelector.js'
+import learnSymbol from './data.js'
 
 export default class Matrix extends Component {
-
-  constructor() {
+  constructor () {
     super()
+
+    this.state = {
+      selectedColor: '#FFF'
+    }
   }
 
-  genRow = (vals) => (
-    vals.map((val, idx) => <Cell key={idx} color={val} />)
-  )
+  setSelectedColor = newColor => {
+    this.setState({
+      selectedColor: newColor
+    })
+  }
 
-  genMatrix = () => (
-    this.props.values.map((rowVals, idx) => <div key={idx} className="row">{this.genRow(rowVals)}</div>)
-  )
+  genRow = vals =>
+    vals.map((val, idx) => (
+      <Cell key={idx} color={val} selectedColor={this.state.selectedColor} />
+    ))
 
-  render() {
+  genMatrix = () =>
+    this.props.values.map((rowVals, idx) => (
+      <div key={idx} className='row'>
+        {this.genRow(rowVals)}
+      </div>
+    ))
+
+  render () {
     return (
-      <div id="app">
-        <ColorSelector />
-        <div id="matrix">
-          {this.genMatrix()}
-        </div>
+      <div id='app'>
+        <ColorSelector setSelectedColor={this.setSelectedColor} />
+        <div id='matrix'>{this.genMatrix()}</div>
       </div>
     )
   }
