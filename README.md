@@ -1,4 +1,4 @@
-# React Using Callbacks to Pass Information Lab
+## React Using Callbacks to Pass Information Lab
 
 ## Objectives
 
