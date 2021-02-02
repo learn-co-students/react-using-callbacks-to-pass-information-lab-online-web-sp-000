@@ -4,9 +4,9 @@ export default class Cell extends Component {
   
   // color prop is used to set the initial state of component 
   constructor(props) {
-    super(props)
+    super()
     this.state = {
-      color: this.props.color
+      color: props.color
     }
   }
 
@@ -18,9 +18,12 @@ export default class Cell extends Component {
   }
   
   // state.color is then used to modify the backgroundColor of the returned div "cell"
+  //8. render handleClick used onClick method 
   render() {
     return (
-      <div className="cell" style={{backgroundColor: this.state.color}}>
+      <div className="cell" 
+      style={{backgroundColor: this.state.color}}
+      onClick={this.handleClick}>
       </div>
     )
   }
