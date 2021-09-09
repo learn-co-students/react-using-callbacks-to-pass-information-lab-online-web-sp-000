@@ -18,12 +18,17 @@ export default class Matrix extends Component {
   }
 
   genRow = (vals) => (
-    vals.map((val, idx) => <Cell key={idx} color={val} selectedColor={this.state.selectedColor} />)
+    //console.log(vals)
+    vals.map((val, idx) => (
+      <Cell key={idx} color={val} selectedColor={this.state.selectedColor} />
+    ))
   )
 
-  genMatrix = () => (
+  genMatrix = () => {
+    return (
+   // console.log(this.props)
     this.props.values.map((rowVals, idx) => <div key={idx} className="row">{this.genRow(rowVals)}</div>)
-  )
+    )}
 
   render() {
     return (
